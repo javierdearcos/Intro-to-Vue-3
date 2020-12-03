@@ -3,8 +3,10 @@ const app = Vue.createApp({
         return {
             product: 'Boots',
             description: 'Feel the power of nature with our new sustainable boots',
-            image: './assets/images/socks_blue.jpg',
-            url: './assets/images/socks_blue.jpg'
+            image: './assets/images/socks_green.jpg',
+            url: 'https://vuejs.org/',
+            inventory: 5,
+            onSale: true
         }
     }
 });
