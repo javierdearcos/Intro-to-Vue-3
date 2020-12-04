@@ -27,8 +27,20 @@ app.component('product-display', {
             :style="{ backgroundColor: variant.color }"
             @mouseover="updateVariant(index)">
           </div>
-          <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" @click="addToCart">Add to Cart</button>
-          <button class="button" :class="{ disabledButton: emptyCart }" :disabled="emptyCart" @click="removeItem">Remove Item</button>
+          <button 
+            class="button" 
+            :class="{ disabledButton: !inStock }" 
+            :disabled="!inStock" 
+            @click="addToCart">
+            Add to Cart
+          </button>
+          <button 
+            class="button" 
+            :class="{ disabledButton: !inStock }" 
+            :disabled="!inStock" 
+            @click="removeFromCart">
+            Remove Item
+          </button>
         </div>
       </div>
     </div>`,
@@ -46,14 +58,14 @@ app.component('product-display', {
         }
     },
     methods: {
-        addToCart() {
-            this.cart += 1;
-        },
-        removeItem() {
-            this.cart -= 1;
-        },
         updateVariant(index) {
             this.selectedVariant = index;
+        },
+        addToCart() {
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
+        },
+        removeFromCart() {
+            this.$emit('remove-from-cart', this.variants[this.selectedVariant].id);
         }
     },
     computed: {
@@ -77,9 +89,6 @@ app.component('product-display', {
                 return 'Free';
             }
             return '2.99';
-        },
-        emptyCart() {
-            return this.cart == 0;
         }
     }
 })
