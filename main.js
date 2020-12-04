@@ -6,7 +6,7 @@ const app = Vue.createApp({
             description: 'Feel the power of nature with our new sustainable boots',
             image: './assets/images/socks_green.jpg',
             url: 'https://vuejs.org/',
-            inventory: 5,
+            inventory: 0,
             onSale: true,
             details: ['50% cotton', '30% wool', '20% polyester'],
             sizes: ['S', 'M', 'L', 'XL'],
@@ -22,6 +22,9 @@ const app = Vue.createApp({
         },
         removeItem() {
             this.cart -= 1;
+        },
+        inStock() {
+            return this.inventory > 0;
         },
         updateImage(variantImage) {
             this.image = variantImage;
