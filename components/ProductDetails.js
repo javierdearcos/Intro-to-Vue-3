@@ -10,10 +10,10 @@ app.component('product-details', {
     `<div>
         <p>{{ description }}</p>
         <ul>
-        <li v-for="detail in details">{{ detail }}</li>
+            <li v-for="detail in details">{{ detail }}</li>
         </ul>
         <ul>
-        <li v-for="(size,index) in sizes" :key="index">{{ size }}</li>
+            <li v-for="(size,index) in sizes" :key="index">{{ size }}</li>
         </ul>
     </div>`,
     data() {
